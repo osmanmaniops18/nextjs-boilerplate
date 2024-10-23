@@ -1,0 +1,14 @@
+Resources:
+  NestApiLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/main.js
+      Runtime: nodejs18.x  # Adjust based on your Node.js version
+      MemorySize: 1024
+      Timeout: 60
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
